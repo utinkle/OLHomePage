@@ -13,5 +13,5 @@ OLHomePageEntity::~OLHomePageEntity()
 
 QUrl OLHomePageEntity::entityModulePath() const
 {
-    return QUrl("qrc:///OL.HomePage/qml/entity/MainWindow.qml");
+    return QUrl("qrc:///OL.HomePage/qml/entity/HPMainWindow.qml");
 }

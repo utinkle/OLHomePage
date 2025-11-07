@@ -63,7 +63,8 @@ set_target_properties(OLHomePageEntity PROPERTIES
 )
 
 file(GLOB entity_qml_resource_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} qml/entity/*.qml)
-file(GLOB entity_img_resource_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} resources/*)
+file(GLOB entity_img_resource_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} resources/images/*)
+file(GLOB entity_age_resource_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} resources/files/*)
 
 qt_add_resources(OLHomePageEntity "entity_qml"
     PREFIX
@@ -72,11 +73,12 @@ qt_add_resources(OLHomePageEntity "entity_qml"
         ${entity_qml_resource_files}
 )
 
-qt_add_resources(OLHomePageEntity "entity_img"
+qt_add_resources(OLHomePageEntity "entity_res"
     PREFIX
         "/OLHomePage"
     FILES
         ${entity_img_resource_files}
+        ${entity_age_resource_files}
 )
 
 target_compile_definitions(OLHomePageEntity PRIVATE ORANGE_ARCH_STRING="${ANDROID_ABI}")
