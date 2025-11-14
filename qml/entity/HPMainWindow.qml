@@ -5,25 +5,62 @@ import QtQuick.Controls.Material
 
 import CCStartup
 import OL.Core
+import OL.Control
+
+import "agree"
+import "content"
 
 AppStartupItem {
     id: root
     asynchronous: true
 
+    Config {
+        id: config
+
+        name: "homepage"
+        group: "default"
+
+        property ConfigObject system: ConfigObject {
+            property bool agreementAccepted: false
+        }
+
+        property ConfigObject session: ConfigObject {
+        }
+    }
+
     AppStartupComponent {
         id: mainContentComp
 
-        Rectangle {
-            id: rect1
+        HPMainContent {
+            id: content
             anchors.fill: parent
-            color: "pink"
 
             AgreementPopup {
                 id: agreementPopup
 
                 anchors.centerIn: parent
-                visible: root.populate && OLModulePage.isActive
+                visible: !config.system.agreementAccepted && root.populate && OLModulePage.isActive
+
+                onAccepted: {
+                    config.system.agreementAccepted = true
+                }
             }
+
+            Connections {
+                target: content.OLModulePage
+
+                function onIsActiveChanged() {
+                    if (content.OLModulePage.isActive) {
+                        Style.mobile.statusbarTheme = Style.Light
+                    }
+                }
+            }
+        }
+    }
+
+    onPopulateChanged: {
+        if (AppStartupItem.content.OLModulePage.isActive) {
+            Style.mobile.statusbarTheme = Style.Light
         }
     }
 }

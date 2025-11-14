@@ -55,6 +55,11 @@ qt_add_plugin(OLHomePageEntity
     olhomepageentity.h olhomepageentity.cpp
 )
 
+target_sources(OLHomePageEntity
+  PRIVATE
+    qml/entity/content/HPContentTitle.qml
+)
+
 target_include_directories(OLHomePageEntity PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 set_target_properties(OLHomePageEntity PROPERTIES
@@ -63,6 +68,7 @@ set_target_properties(OLHomePageEntity PROPERTIES
 )
 
 file(GLOB entity_qml_resource_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} qml/entity/*.qml)
+file(GLOB entity_sub_qml_resource_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} qml/entity/*/*.qml)
 file(GLOB entity_img_resource_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} resources/images/*)
 file(GLOB entity_age_resource_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} resources/files/*)
 
@@ -71,6 +77,7 @@ qt_add_resources(OLHomePageEntity "entity_qml"
         "/OL.HomePage"
     FILES
         ${entity_qml_resource_files}
+        ${entity_sub_qml_resource_files}
 )
 
 qt_add_resources(OLHomePageEntity "entity_res"

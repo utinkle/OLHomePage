@@ -8,6 +8,8 @@ import CCStartup
 Popup {
     id: root
 
+    signal accepted()
+
     width: parent.width * 0.6
     height: Math.min(parent.height * 0.8, 500)
 
@@ -41,6 +43,7 @@ Popup {
     ColumnLayout {
         spacing: 20
         anchors.fill: parent
+        clip: true
 
         AgTitlePane {
             Layout.fillWidth: true
@@ -99,7 +102,9 @@ Popup {
             }
 
             AgInitButtonPane {
+                agreeEnabled: agreeStackInitPage.agreeAllChecked
                 onAgreeButtonClicked: {
+                    root.accepted()
                     root.close()
                 }
 

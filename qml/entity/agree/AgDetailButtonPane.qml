@@ -3,18 +3,22 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Controls.Material
 
+import OL.Control
+
 Item {
     id: root
     signal agreeButtonClicked
     signal backButtonClicked
 
-    Button {
+    CustomButton {
         anchors.left: parent.left
         anchors.leftMargin: 20
 
         font.pixelSize: 12
         Material.roundedScale: Material.SmallScale
-        text: "<"
+        icon.name: "material:arrow_back_ios_new"
+        icon.width: 16
+        icon.height: 16
 
         onClicked: root.backButtonClicked()
     }

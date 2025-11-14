@@ -11,6 +11,8 @@ ColumnLayout {
     signal pluginSafetyLinkActivated()
     signal howWeOperateLinkActivated()
 
+    property alias agreeAllChecked: agreeAllCheckBox.checked
+
     ScrollView {
         id: scrollView
         Layout.fillWidth: true
@@ -105,6 +107,7 @@ ColumnLayout {
     }
 
     CheckBox {
+        id: agreeAllCheckBox
         Layout.leftMargin: 10
         text: "我已阅读并同意上述内容"
     }

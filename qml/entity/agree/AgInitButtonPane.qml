@@ -9,6 +9,7 @@ RowLayout {
 
     signal quitButtonClicked
     signal agreeButtonClicked
+    property alias agreeEnabled: agreeButton.enabled
 
     Item { Layout.fillWidth: true }
 
@@ -32,6 +33,7 @@ RowLayout {
     }
 
     Button {
+        id: agreeButton
         Layout.alignment: Qt.AlignVCenter
 
         text: "同意并继续"

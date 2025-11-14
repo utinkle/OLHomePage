@@ -11,10 +11,7 @@ ScrollView {
     TextArea {
         id: textArea
 
-        leftInset: 10
-        rightInset: 10
-        topInset: 10
-        bottomInset: 10
+        topPadding: 10
 
         clip: true
         readOnly: true
